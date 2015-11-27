@@ -50,8 +50,11 @@
     
     CGFloat diameter = isIpad ? MAX(self.cameraShowView.frame.size.width, self.cameraShowView.frame.size.height) : MIN(self.self.cameraShowView.frame.size.width, self.cameraShowView.frame.size.height);
     
-    UIBezierPath *circlePath = [UIBezierPath bezierPathWithOvalInRect:
-                                CGRectMake(0.0f, position, diameter, diameter)];
+//    UIBezierPath *circlePath = [UIBezierPath bezierPathWithOvalInRect:
+//                                CGRectMake(0.0f, position, diameter, diameter)];
+    UIBezierPath *circlePath = [UIBezierPath bezierPath];
+    CGRect rect = [[UIScreen mainScreen] bounds];
+    [circlePath addArcWithCenter:CGPointMake(CGRectGetWidth(rect)/2, (CGRectGetHeight(rect)-80)/2) radius:CGRectGetWidth(rect)/2 startAngle:0 endAngle:2*M_PI clockwise:0];
     [circlePath setUsesEvenOddFillRule:YES];
     [circleLayer setPath:[circlePath CGPath]];
     [circleLayer setFillColor:[[UIColor clearColor] CGColor]];
